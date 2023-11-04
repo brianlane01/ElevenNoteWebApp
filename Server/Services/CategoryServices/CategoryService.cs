@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using ElvenNoteWepApp.Server.Data;
 using ElvenNoteWepApp.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using Shared.Models.Category;
+using ElvenNoteWepApp.Shared.Models.Category;
 
 namespace Server.Services.CategoryServices;
 

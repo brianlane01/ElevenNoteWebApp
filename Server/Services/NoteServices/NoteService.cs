@@ -6,7 +6,7 @@ using ElvenNoteWepApp.Server.Data;
 using ElvenNoteWepApp.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Shared.Models.Note;
+using ElvenNoteWepApp.Shared.Models.Note;
 
 namespace Server.Services.NoteServices;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shared.Models.Note;
+namespace ElvenNoteWepApp.Shared.Models.Note;
 
 public class NoteListItem
 {

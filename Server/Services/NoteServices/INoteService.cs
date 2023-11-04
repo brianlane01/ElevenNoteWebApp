@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Shared.Models.Note;
+using ElvenNoteWepApp.Shared.Models.Note;
 
 namespace Server.Services.NoteServices;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Server.Services.NoteServices;
-using Shared.Models.Note;
+using ElvenNoteWepApp.Shared.Models.Note;
 
 namespace Server.Controllers
 {
