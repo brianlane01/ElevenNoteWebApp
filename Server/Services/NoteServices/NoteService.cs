@@ -85,6 +85,24 @@ public class NoteService : INoteService
             };
     }
 
+    public async Task<NoteDetail?> GetNoteByCategoryIdAsync(int categoryId)
+    {
+        Note? entity = await _dbContext.Notes
+                .Include(nameof(Category))
+                .FirstOrDefaultAsync(e => e.CategoryId == categoryId && e.OwnerId == _userId);
+
+            return entity is null ? null : new NoteDetail
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                Content = entity.Content,
+                CreatedUtc = entity.CreatedUtc,
+                ModifiedUtc = entity.ModifiedUtc,
+                CategoryName = entity.Category.Name,
+                CategoryId = entity.Category.Id
+            };
+    }
+
     public async Task<bool> UpdateNoteAsync(NoteEdit request)
     {
         if (request == null)

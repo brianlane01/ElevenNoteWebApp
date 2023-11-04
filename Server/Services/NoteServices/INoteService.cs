@@ -14,6 +14,6 @@ public interface INoteService
     Task<bool> UpdateNoteAsync(NoteEdit request);
     Task<bool> DeleteNoteAsync(int noteId);
     Task<bool> DeleteNoteAsync(string userId);
-
+    Task<NoteDetail?> GetNoteByCategoryIdAsync(int categoryId);
     void SetUserId(string userId);
 }
