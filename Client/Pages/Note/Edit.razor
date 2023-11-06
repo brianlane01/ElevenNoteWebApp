@@ -11,7 +11,7 @@
 
     private NoteEdit model = new();
     private List<CategoryListItem> categories;
-    private string errorMessage;
+    private string? errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
@@ -21,7 +21,7 @@
 
     private async void HandleSubmit()
     {
-        var creatRes = await http.PostAsJsonAsync<NoteEdit>("/api/Note/Edit/{NoteId}", model);
+        var creatRes = await http.PutAsJsonAsync<NoteEdit>("/api/Note/Edit/{NoteId}", model);
         if (creatRes.IsSuccessStatusCode)
         {
             navigation.NavigateTo($"/Note/{NoteId}");

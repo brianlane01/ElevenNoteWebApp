@@ -99,7 +99,7 @@ namespace Server.Controllers
         }
 
         [HttpPut("Edit/{id}")]
-        public async Task<IActionResult> Edit(int id, NoteEdit model)
+        public async Task<IActionResult> Edit(NoteEdit model)
         {
             if(!SetUserIdInService())
                 return Unauthorized();
