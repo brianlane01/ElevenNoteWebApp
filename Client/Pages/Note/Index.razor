@@ -4,6 +4,7 @@
 @inject HttpClient http
 
 <a href ="/Note/Create">Create A Note</a>
+<br />
 
 @code{
     private IEnumerable<NoteListItem> _notes;
@@ -20,6 +21,7 @@
 }
 else
 {
+    <br />
     <table class="table table-striped table-dark table-hover table-bordered border-danger">
         <thead>
             <tr class="text-center">

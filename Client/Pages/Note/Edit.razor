@@ -1,4 +1,4 @@
-@page "/Note/Create"
+@page "/Note/Edit/{NoteId:int}"
 @using ElvenNoteWepApp.Shared.Models.Note
 @using ElvenNoteWepApp.Shared.Models.Category
 @inject HttpClient http
@@ -6,21 +6,25 @@
 @inject NavigationManager navigation
 
 @code {
-    private NoteCreate model = new();
+    [Parameter]
+    public int NoteId {get; set;}
+
+    private NoteEdit model = new();
     private List<CategoryListItem> categories;
     private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
+        model = await http.GetFromJsonAsync<NoteEdit>($"/api/Note/{NoteId}");
         categories = await http.GetFromJsonAsync<List<CategoryListItem>>("/api/Category");
     }
 
     private async void HandleSubmit()
     {
-        var creatRes = await http.PostAsJsonAsync<NoteCreate>("/api/Note", model);
+        var creatRes = await http.PostAsJsonAsync<NoteEdit>("/api/Note/Edit/{NoteId}", model);
         if (creatRes.IsSuccessStatusCode)
         {
-            navigation.NavigateTo("/Note");
+            navigation.NavigateTo($"/Note/{NoteId}");
         }
         else
         {
@@ -28,7 +32,7 @@
         }
     }
 }
-<h3>Create A Note</h3>
+<h3>Edit Note: @model.Title</h3>
 
 @if (errorMessage != null)
 {

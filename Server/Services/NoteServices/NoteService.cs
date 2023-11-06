@@ -60,7 +60,7 @@ public class NoteService : INoteService
                 {
                     Id = n.Id,
                     Title = n.Title,
-                    CategoryName = n.Category.Name,
+                    CategoryName = n.Category!.Name,
                     CreatedUtc = n.CreatedUtc
                 });
 
@@ -80,7 +80,7 @@ public class NoteService : INoteService
                 Content = entity.Content,
                 CreatedUtc = entity.CreatedUtc,
                 ModifiedUtc = entity.ModifiedUtc,
-                CategoryName = entity.Category.Name,
+                CategoryName = entity.Category!.Name,
                 CategoryId = entity.Category.Id
             };
     }
@@ -98,7 +98,7 @@ public class NoteService : INoteService
                 Content = entity.Content,
                 CreatedUtc = entity.CreatedUtc,
                 ModifiedUtc = entity.ModifiedUtc,
-                CategoryName = entity.Category.Name,
+                CategoryName = entity.Category!.Name,
                 CategoryId = entity.Category.Id
             };
     }

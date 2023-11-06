@@ -84,7 +84,7 @@ namespace Server.Controllers
             return Ok(note);
         }
 
-        [HttpGet("{categoryId}")]
+        [HttpGet("NoteByCategory/{categoryId}")]
         public async Task<IActionResult> NoteByCategory(int categoryId)
         {
             if (!SetUserIdInService())
