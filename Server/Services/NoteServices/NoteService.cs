@@ -50,7 +50,7 @@ public class NoteService : INoteService
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<NoteListItem>> GetAllNotesAsync()
+    public async Task<List<NoteListItem>> GetAllNotesAsync()
     {
         var noteQuery = _dbContext
             .Notes

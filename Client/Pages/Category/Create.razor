@@ -1,0 +1,46 @@
+@page "/Category/Create"
+@using ElvenNoteWepApp.Shared.Models.Category
+@inject HttpClient http
+@attribute [Authorize]
+@inject NavigationManager navigation
+
+@code{
+    private CategoryCreate model = new();
+    private string errorMessage;
+
+    private async void HandleSubmit()
+    {
+        var createRes = await http.PostAsJsonAsync<CategoryCreate>("/api/Category", model);
+
+        if (createRes.IsSuccessStatusCode)
+        {
+            navigation.NavigateTo("/Category");
+        }
+        else
+        {
+            errorMessage = "Could not create your category right now. Please try again later.";
+        }            
+    }
+}
+
+@if(errorMessage != null)
+{
+    <h5 class="text-danger">@errorMessage</h5>
+}
+else
+{
+    <div class="container">
+        <EditForm Model="@model" OnInvalidSubmit="@HandleSubmit">
+            <DataAnnotationsValidator />
+            <validationSummary />
+        </EditForm>
+        <div class="form-group">
+            <label>Name</label>
+            <InputText class="form-control" @bind-Value="model.Name" />
+        </div>
+        <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+    </div>
+    
+}

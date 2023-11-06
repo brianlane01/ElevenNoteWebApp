@@ -9,7 +9,7 @@ namespace Server.Services.NoteServices;
 public interface INoteService
 {
     Task<bool> CreateNoteAsync(NoteCreate model);
-    Task<IEnumerable<NoteListItem>> GetAllNotesAsync();
+    Task<List<NoteListItem>> GetAllNotesAsync();
     Task<NoteDetail?> GetNoteByIdAsync(int noteId);
     Task<bool> UpdateNoteAsync(NoteEdit request);
     Task<bool> DeleteNoteAsync(int noteId);

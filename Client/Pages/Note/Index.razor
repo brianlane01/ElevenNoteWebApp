@@ -1,4 +1,52 @@
-@page "/Note/Index"
-
+@page "/Note"
 @using ElvenNoteWepApp.Shared.Models.Note
+@attribute [Authorize]
+@inject HttpClient http
+
+<a href ="/Note/Create">Create A Note</a>
+
+@code{
+    private IEnumerable<NoteListItem> _notes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _notes = await http.GetFromJsonAsync<List<NoteListItem>>("/api/Note");
+    }
+}
+
+@if(_notes == null)
+{
+    <p><em>Loading......</em></p>
+}
+else
+{
+    <table class="table table-striped table-dark table-hover table-bordered border-danger">
+        <thead>
+            <tr class="text-center">
+                <th class="text-center">Note Id</th>
+                <th>Note Title</th>
+                <th> Note Category Name</th>
+                <th>Date Note was Created</th>
+                <th>What would you like to do?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var note in _notes)
+            {
+                <tr class="text-center">
+                    <td class="text-center"><strong>@note.Id</strong></td>
+                    <td><strong>@note.Title</strong></td>
+                    <td><strong>@note.CategoryName</strong></td>
+                    <td><strong>@note.CreatedUtc</strong></td>
+                    <td>
+                        <a href=@($"Note/{note.Id}")>Details</a>
+                        <a href=@($"Note/Edit/{note.Id}")>Edit</a>
+                        <a href=@($"Note/Delete/{note.Id}")>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 

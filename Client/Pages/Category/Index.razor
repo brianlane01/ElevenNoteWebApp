@@ -1,0 +1,43 @@
+@page "/Category"
+
+@using ElvenNoteWepApp.Shared.Models.Category
+@inject HttpClient Http
+@attribute [Authorize]
+<PageTitle>Index</PageTitle>
+<h3>Categories</h3>
+
+@code{
+    private List<CategoryListItem> categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<List<CategoryListItem>>("/api/Category");
+    }
+}
+<a href="/Category/Create" class="bs-purple">Create a Category</a>
+
+@if (categories == null)
+{
+    <p><em>Loading. . . </em></p>
+}
+else
+{
+    <table class = "table table-striped table-dark table-hover table-bordered border-danger">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(CategoryListItem category in categories)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
