@@ -2,7 +2,7 @@ repo_name: brianlane01/ElevenNoteWebApp
 report_id: 2615a2a0a301d922b008531b7e8a506c
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-23T17:19:28+00:00'
+timestamp: '2024-02-29T19:35:20+00:00'
 requested_by: brianlane01
 provider: github
 branch: main
@@ -88,7 +88,7 @@ tools:
   last_updated_by: brianlane01
   last_updated_on: 2023-11-03 21:16:06.000000000 Z
 - name: Entity Framework Core
-  description: 'Lightweight and cross-platform version of the popular Entity Framework '
+  description: Lightweight and cross-platform version of the popular Entity Framework
   website_url: https://docs.microsoft.com/en-us/ef/core/
   version: 7.0.13
   license: MIT
